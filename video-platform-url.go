@@ -11,7 +11,7 @@ func FindUrl(id string, provider string) videoUrl {
 	case "youtube":
 		url = "https://www.youtube.com/watch?v=" + string(id)
 	default:
-		url = id
+		url = "'" + id + "'"
 	}
 
 	return videoUrl(url)
