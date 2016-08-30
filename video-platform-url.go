@@ -1,18 +1,36 @@
-package videoPlatformUrl
+package videoPlatformURL
 
-type videoUrl string
+import "net/url"
 
-func FindUrl(id string, provider string) videoUrl {
+var (
+	facebookVideoURL = "https://www.facebook.com/plugins/video.php?href="
+)
+
+//FindURL Create a well formated URL for different providers
+func FindURL(str string, provider string) string {
 
 	var url string
 	switch provider {
 	case "dailymotion":
-		url = "http://www.dailymotion.com/video/" + string(id)
+		url = "http://www.dailymotion.com/video/" + string(str)
 	case "youtube":
-		url = "https://www.youtube.com/watch?v=" + string(id)
+		url = "https://www.youtube.com/watch?v=" + string(str)
+	case "proxy":
+		url = analyzeDomain(str)
 	default:
-		url = string(id)
+		url = string(str)
 	}
 
-	return videoUrl(url)
+	return url
+}
+
+func analyzeDomain(str string) string {
+	if str[0:len(facebookVideoURL)] == facebookVideoURL {
+		videoURL, err := url.QueryUnescape(str[len(facebookVideoURL):len(str)])
+		if err != nil {
+			return str[len(facebookVideoURL):len(str)]
+		}
+		return videoURL
+	}
+	return str
 }
