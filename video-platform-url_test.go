@@ -36,4 +36,11 @@ func TestFindURL(t *testing.T) {
 	if actual != expected {
 		t.Errorf("Test failed, expected: '%s', got:  '%s'", expected, actual)
 	}
+
+	proxyShortURL := "http://www.20minutes.fr/1914323"
+	expected = "http://www.20minutes.fr/1914323"
+	actual = FindURL(proxyShortURL, "proxy")
+	if actual != expected {
+		t.Errorf("Test failed, expected: '%s', got:  '%s'", expected, actual)
+	}
 }
