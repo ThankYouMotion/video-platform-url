@@ -25,7 +25,7 @@ func FindURL(str string, provider string) string {
 }
 
 func analyzeDomain(str string) string {
-	if str[0:len(facebookVideoURL)] == facebookVideoURL {
+	if len(str) > len(facebookVideoURL) && str[0:len(facebookVideoURL)] == facebookVideoURL {
 		videoURL, err := url.QueryUnescape(str[len(facebookVideoURL):len(str)])
 		if err != nil {
 			return str[len(facebookVideoURL):len(str)]
