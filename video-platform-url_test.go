@@ -30,6 +30,13 @@ func TestFindURL(t *testing.T) {
 		t.Errorf("Test failed, expected: '%s', got:  '%s'", expected, actual)
 	}
 
+	digitekaID := "8mruqx"
+	expected = "https://www.ultimedia.com/deliver/generic/iframe/mdtk/01836272/src/8mruqx"
+	actual = FindURL(digitekaID, "digiteka")
+	if actual != expected {
+		t.Errorf("Test failed, expected: '%s', got:  '%s'", expected, actual)
+	}
+
 	proxyURL := "http://www.20minutes.fr/insolite/1914323-20160828-harcele-trolls-zoo-cincinnati-decide-fermer-compte-twitter"
 	expected = "http://www.20minutes.fr/insolite/1914323-20160828-harcele-trolls-zoo-cincinnati-decide-fermer-compte-twitter"
 	actual = FindURL(proxyURL, "proxy")

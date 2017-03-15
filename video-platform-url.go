@@ -17,6 +17,8 @@ func FindURL(str string, provider string) string {
 		url = "https://www.youtube.com/watch?v=" + string(str)
 	case "proxy":
 		url = analyzeDomain(str)
+	case "digiteka":
+		url = "https://www.ultimedia.com/deliver/generic/iframe/mdtk/01836272/src/" + string(str)
 	default:
 		url = string(str)
 	}
