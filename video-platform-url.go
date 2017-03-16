@@ -1,6 +1,9 @@
 package videoPlatformURL
 
-import "net/url"
+import (
+	"net/url"
+	"strings"
+)
 
 var (
 	facebookVideoURL = "https://www.facebook.com/plugins/video.php?href="
@@ -18,7 +21,12 @@ func FindURL(str string, provider string) string {
 	case "proxy":
 		url = analyzeDomain(str)
 	case "digiteka":
-		url = "https://www.ultimedia.com/deliver/generic/iframe/mdtk/01836272/src/" + string(str)
+		// if it's an URL
+		if strings.Contains(str, "://") {
+			url = string(str)
+		} else {
+			url = "https://www.ultimedia.com/deliver/generic/iframe/mdtk/01836272/src/" + string(str)
+		}
 	default:
 		url = string(str)
 	}

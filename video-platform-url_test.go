@@ -37,6 +37,13 @@ func TestFindURL(t *testing.T) {
 		t.Errorf("Test failed, expected: '%s', got:  '%s'", expected, actual)
 	}
 
+	digitekaID2 := "http://ngs14c.digiteka.net/862acf558ea2bead6e6f2dbc40de50c5/c3BlZWQ9MTUwO3VzZXI9bmdzO2V4cGlyZT01OGNhYTJkZA,,/sdj1/d9/a4/d9a4565aefe466757adca25d96153bf7745c6ccb.mp4"
+	expected = "http://ngs14c.digiteka.net/862acf558ea2bead6e6f2dbc40de50c5/c3BlZWQ9MTUwO3VzZXI9bmdzO2V4cGlyZT01OGNhYTJkZA,,/sdj1/d9/a4/d9a4565aefe466757adca25d96153bf7745c6ccb.mp4"
+	actual = FindURL(digitekaID2, "digiteka")
+	if actual != expected {
+		t.Errorf("Test failed, expected: '%s', got:  '%s'", expected, actual)
+	}
+
 	proxyURL := "http://www.20minutes.fr/insolite/1914323-20160828-harcele-trolls-zoo-cincinnati-decide-fermer-compte-twitter"
 	expected = "http://www.20minutes.fr/insolite/1914323-20160828-harcele-trolls-zoo-cincinnati-decide-fermer-compte-twitter"
 	actual = FindURL(proxyURL, "proxy")
